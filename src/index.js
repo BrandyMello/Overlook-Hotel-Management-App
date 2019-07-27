@@ -2,19 +2,33 @@ import $ from 'jquery';
 import './css/base.scss';
 import './images/main2.jpg'
 import './images/roses.jpg'
-// import './images/cursor-rose.jpg'
 import domUpdates from './domUpdates.js'
+import Hotel from './Hotel.js'
 
-let bookings, orders, customers, rooms;
+let guestsData, bookingsData, roomsData, ordersData;
+let copperRose;
 
-// fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
-// .then(response => response.json())
-// .then(dataset => bookings = dataset.bookings)
-// .then(dataset => orders = dataset.roomServices)
-// .then(dataset => customers = dataset.users)
-// .then(dataset => rooms = dataset.rooms)
-// // .then(console.log(customers[0], rooms[0], bookings[0], orders[0]))
-// .catch(error => console.log(error))
+let guests = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users');
+let bookings = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings');
+let rooms = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms');
+let orders = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices');
+
+Promise.all([guests, bookings, rooms,  orders])
+  .then(value => Promise.all(value.map(value => value.json())))
+  .then(compiledData => {
+    guestsData = compiledData[0];
+    bookingsData = compiledData[1];
+    roomsData = compiledData[2];
+    ordersData = compiledData[3];
+  });
+
+  setTimeout(() => {
+  let copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
+  console.log(copperRose.guests);
+  console.log(copperRose.bookings);
+  console.log(copperRose.rooms);
+  console.log(copperRose.orders);
+}, 1000);
 
   domUpdates.appendDate();
 

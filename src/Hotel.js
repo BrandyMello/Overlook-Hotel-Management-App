@@ -4,14 +4,13 @@
 // import roomServices from '../src/sample-roomServices';
 import dom from './domUpdates.js'
 
+
 class Hotel {
-  constructor(customerData, roomData, bookingData, roomServiceData) {
-    this.customerData = customerData;
-    this.roomData = roomData;
-    this.bookingData = bookingData;
-    this.orderData = roomServiceData;
-
-
+  constructor(guests, bookings, rooms,  orders) {
+    this.guests = guests;
+    this.bookings = bookings;
+    this.rooms = rooms;
+    this.orders = orders;
   }
 
 }
