@@ -25,27 +25,34 @@ describe('Hotel', () => {
     expect(hotel).to.be.an.instanceOf(Hotel);
   });
 
-  it('should hold customer data', () => {
+  it('should hold accurate customer data', () => {
     expect(hotel.guests).to.not.eql(undefined);
-    
-    console.log(hotel.guests)
+    expect(hotel.guests[0].name).to.eql("Matilde Larson");
+    expect(hotel.guests[1].id).to.eql(2);
   });
 
-    it('should hold booking data', () => {
+    it('should hold accurate booking data', () => {
     expect(hotel.bookings).to.not.eql(undefined);
+    expect(hotel.bookings[0].userID).to.eql(4);
+    expect(hotel.bookings[1].date).to.eql("2019/10/30");
+    expect(hotel.bookings[2].roomNumber).to.eql(41);
   });
 
-    it('should hold room data', () => {
+    it('should hold accurate room data', () => {
     expect(hotel.rooms).to.not.eql(undefined);
+    expect(hotel.rooms[0].number).to.eql(1);
+    expect(hotel.rooms[1].roomType).to.eql("single room");
+    expect(hotel.rooms[2].bidet).to.eql(false);
+    expect(hotel.rooms[3].bedSize).to.eql("full");
+    expect(hotel.rooms[4].numBeds).to.eql(2);
+    expect(hotel.rooms[5].costPerNight).to.eql(211.42);
   });
 
-
-    it('should hold room service data', () => {
+    it('should hold accurate room service data', () => {
     expect(hotel.orders).to.not.eql(undefined);
+    expect(hotel.orders[0].userID).to.eql(14);
+    expect(hotel.orders[1].date).to.eql("2019/10/18");
+    expect(hotel.orders[2].food).to.eql("Tasty Wooden Sandwich");
+    expect(hotel.orders[3].totalCost).to.eql(14.87);
   });
-
-  //property not equal to undefined
-
-
-
 });
