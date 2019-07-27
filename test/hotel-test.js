@@ -14,7 +14,7 @@ let hotel;
 describe('Hotel', () => {
 
   beforeEach(() => {
-    hotel = new Hotel(users, rooms, bookings, roomServices);
+    hotel = new Hotel(users, bookings, rooms, roomServices);
   });
   
   it('should be a function', () => {
@@ -26,20 +26,21 @@ describe('Hotel', () => {
   });
 
   it('should hold customer data', () => {
-    expect(hotel.customerData).to.not.eql(undefined);
-    console.log(hotel.customerData);
-  });
-
-    it('should hold room data', () => {
-    expect(hotel.roomData).to.not.eql(undefined);
+    expect(hotel.guests).to.not.eql(undefined);
+    console.log(hotel.guests);
   });
 
     it('should hold booking data', () => {
-    expect(hotel.bookingData).to.not.eql(undefined);
+    expect(hotel.bookings).to.not.eql(undefined);
   });
 
+    it('should hold room data', () => {
+    expect(hotel.rooms).to.not.eql(undefined);
+  });
+
+
     it('should hold room service data', () => {
-    expect(hotel.orderData).to.not.eql(undefined);
+    expect(hotel.orders).to.not.eql(undefined);
   });
 
   //property not equal to undefined
