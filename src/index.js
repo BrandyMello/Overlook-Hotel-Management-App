@@ -4,6 +4,12 @@ import './images/main2.jpg'
 import './images/roses.jpg'
 import domUpdates from './domUpdates.js'
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
   domUpdates.appendDate();
+
+  $('.tabs a').on('click', function (event) {
+    event.preventDefault();
+    $('.tab-now').removeClass('tab-now');
+    $(this).parent().addClass('tab-now');
+    $('.content div').hide();
+    $($(this).attr('href')).show();
+});

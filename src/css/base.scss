@@ -1,7 +1,12 @@
 $primary-background: url('../images/main2.jpg');
 $border-text-color: #FFF;
 $primary-color: #DC9E8B;
-$secondary-color: #FFD98A;
+$secondary-color: #fed98ae0;
+// #ffe1a2e0 other option
+$third-color: #8B9098;
+$background: #F4F6F4;
+$border: #c6c9cd;
+$main-text: #3f434b;
 $main-font: 'Raleway', sans-serif;
 $accent-font: 'Dancing Script', cursive;
 // 'Raleway', sans-serif
@@ -30,17 +35,99 @@ header {
  }
 
  h1 {
-  // padding: 0px 10px;
   font-family: $main-font;
   margin-block-end: .5em;
  }
 
  p {
-  // padding: 0px 10px;
   font-family: $accent-font;
   font-size: 2em;
   margin-block-start: 0;
   margin-block-end: .5em;
  }
+}
+
+main {
+  margin-left: 9.9%;
+  margin-top: 20px;
+  width: 80%;
+}
+
+ul, li, div {
+    background: hsla(0, 0%, 0%, 0);
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: 13px/20px $main-font;
+    font-weight: bold;
+}
+
+li {
+    display: list-item;
+    text-align: center;
+}
+
+.tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tabs li:first-child a {
+    border-right: 0;
+    border-radius: 6px 0 0 0;
+}
+
+.tabs li:last-child a {
+    border-left: 0;
+    border-radius: 0 6px 0 0;
+}
+
+
+.tabs .tab-now a {
+    background: $secondary-color;
+    border-bottom: none;
+    color: $third-color;
+    cursor: default;
+}
+
+.tabs a {
+    background: $background;
+    border: 1px solid $border;
+    color: $main-text;
+    text-decoration-line: none;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 44px;
+    text-align: center;
+    text-transform: uppercase;
+    
+}
+
+.tabs li {
+    float: left;
+    width: 25%;
+}
+
+.content {
+  background: $secondary-color;
+    border: 1px solid $border;
+    border-radius: 0 0 6px 6px;
+    border-top: 0;
+    clear: both;
+    margin-bottom: 20px;
+    position: relative;
+    top: -1px;
+}
+
+.content p {
+    margin: 0;
+    padding: 20px;
+    color: $main-text;
 }
 
