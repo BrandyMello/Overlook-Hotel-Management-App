@@ -1,9 +1,9 @@
 import chai from 'chai';
 import spies from 'chai-spies';
-import users from '../src/sample-users';
-import rooms from '../src/sample-rooms';
-import bookings from '../src/sample-bookings';
-import roomServices from '../src/sample-roomServices';
+import users from '../src/sample-users.js';
+import rooms from '../src/sample-rooms.js';
+import bookings from '../src/sample-bookings.js';
+import roomServices from '../src/sample-roomServices.js';
 import Hotel from '../src/Hotel';
 
 const expect = chai.expect;
@@ -27,7 +27,8 @@ describe('Hotel', () => {
 
   it('should hold customer data', () => {
     expect(hotel.guests).to.not.eql(undefined);
-    console.log(hotel.guests);
+    
+    console.log(hotel.guests)
   });
 
     it('should hold booking data', () => {

@@ -1,4 +1,4 @@
-users = [
+const users = [
 {
 id: 1,
 name: "Matilde Larson"
@@ -100,3 +100,5 @@ id: 25,
 name: "Bianka Russel"
 }
 ]
+
+export default users;
