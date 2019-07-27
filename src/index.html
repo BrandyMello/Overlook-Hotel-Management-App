@@ -2,12 +2,42 @@
 <html lang="en-US">
   <head>
     <title>Webpack Starter Kit</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <header>
+      <img src="./images/roses.jpg" alt="A beautiful arrangement of peach and yellow roses against a crisp white background.">
+      <h1>The Copper Rose</h1>
+      <p>A heavenly respite for the senses.</p>
+      <span id="date">D</span>
+    </header>
+    <main>
+      <ul class="tabs">
+          <li class="tab-now"><a href="#tab-1" rel="nofollow">The Copper Rose</a>
+          </li>
+          <li class=""><a href="#tab-2" rel="nofollow">Rooms</a>
+          </li>
+          <li class=""><a href="#tab-3" rel="nofollow">Customers</a>
+          <li class=""><a href="#tab-4" rel="nofollow">Orders</a>
+          </li>
+          </li>
+      </ul>
+      <div class="content">
+          <div id="tab-1" style="display: block;">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec neque nisi, dictum aliquet lectus.</p>
+          </div>
+          <div id="tab-2" style="display: none;">
+              <p>Second Block: Phasellus pharetra aliquet viverra. Donec scelerisque tincidunt diam, eu fringilla urna auctor at.</p>
+          </div>
+          <div id="tab-3" style="display: none;">
+              <p>Third block: Phasellus pharetra aliquet viverra. Donec scelerisque tincidunt diam, eu fringilla urna auctor at.</p>
+          </div>
+          <div id="tab-4" style="display: none;">
+              <p>Fourth Block:Phasellus pharetra aliquet viverra. Donec scelerisque tincidunt diam, eu fringilla urna auctor at.</p>
+          </div>
+      </div>
+    </main>
 
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+   
   </body>
 </html>
