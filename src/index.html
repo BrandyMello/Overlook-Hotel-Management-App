@@ -23,9 +23,21 @@
           </li>
       </ul>
       <div class="content">
-          <div id="tab-1" style="display: block;">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec neque nisi, dictum aliquet lectus.</p>
-          </div>
+          <section class="guest-search-add-forms" style="display: block;">
+              <form id="search-form">
+                <input type="text" id="search-guest-name" placeholder="Jane Smith" class="form form-input">
+                <label for="search-guest-name" class="form form-label">Search For Guest</label>
+                <button form="search-form" class="form form-btn">SUBMIT</button>
+              </form>
+              <form id="add-guest-form">
+                <input type="text" id="add-guest-name" placeholder="Jane Smith" class="form form-input">
+                <label for="add-guest-name" class="form form-label">Add New Guest</label>
+                <button form="add-guest-form" class="form form-btn">SUBMIT</button>
+              </form>
+              <div id="tab-1" class="welcome-message" style="display: block;">
+                Welcome to The Copper Rose
+              </div>   
+          </section>
           <div id="tab-2" style="display: none;">
               <p>Second Block: Phasellus pharetra aliquet viverra. Donec scelerisque tincidunt diam, eu fringilla urna auctor at.</p>
           </div>

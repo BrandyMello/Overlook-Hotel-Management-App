@@ -1,7 +1,7 @@
-import users from '../src/sample-users';
-import rooms from '../src/sample-rooms';
-import bookings from '../src/sample-bookings';
-import roomServices from '../src/sample-roomServices';
+// import users from '../src/sample-users';
+// import rooms from '../src/sample-rooms';
+// import bookings from '../src/sample-bookings';
+// import roomServices from '../src/sample-roomServices';
 import dom from './domUpdates.js'
 
 class Hotel {
@@ -9,7 +9,8 @@ class Hotel {
     this.customerData = customerData;
     this.roomData = roomData;
     this.bookingData = bookingData;
-    
+    this.orderData = roomServiceData;
+
 
   }
 

@@ -9,7 +9,6 @@ $border: #c6c9cd;
 $main-text: #3f434b;
 $main-font: 'Raleway', sans-serif;
 $accent-font: 'Dancing Script', cursive;
-// 'Raleway', sans-serif
 
 html {
   background: url('../images/main2.jpg') no-repeat center center fixed;
@@ -40,7 +39,6 @@ header {
  }
 
  p {
-  font-family: $accent-font;
   font-size: 2em;
   margin-block-start: 0;
   margin-block-end: .5em;
@@ -54,80 +52,128 @@ main {
 }
 
 ul, li, div {
-    background: hsla(0, 0%, 0%, 0);
-    border: 0;
-    font-size: 100%;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-    vertical-align: baseline;
-    font: 13px/20px $main-font;
-    font-weight: bold;
+  background: hsla(0, 0%, 0%, 0);
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font: 13px/20px $main-font;
+  font-weight: bold;
 }
 
 li {
-    display: list-item;
-    text-align: center;
+  display: list-item;
+  text-align: center;
 }
 
 .tabs {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .tabs li:first-child a {
-    border-right: 0;
-    border-radius: 6px 0 0 0;
+  border-right: 0;
+  border-radius: 6px 0 0 0;
 }
 
 .tabs li:last-child a {
-    border-left: 0;
-    border-radius: 0 6px 0 0;
+  border-left: 0;
+  border-radius: 0 6px 0 0;
 }
 
 
 .tabs .tab-now a {
-    background: $secondary-color;
-    border-bottom: none;
-    color: $third-color;
-    cursor: default;
+  background: $secondary-color;
+  border-bottom: none;
+  color: $third-color;
+  cursor: default;
+    // cursor: url('../images/cursor-rose.jpg'), auto;
 }
 
 .tabs a {
-    background: $background;
-    border: 1px solid $border;
-    color: $main-text;
-    text-decoration-line: none;
-    display: block;
-    font-size: 11px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 44px;
-    text-align: center;
-    text-transform: uppercase;
-    
+  background: $background;
+  border: 1px solid $border;
+  color: $main-text;
+  text-decoration-line: none;
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;    
 }
 
 .tabs li {
-    float: left;
-    width: 25%;
+  float: left;
+  width: 25%;
 }
 
 .content {
   background: $secondary-color;
-    border: 1px solid $border;
-    border-radius: 0 0 6px 6px;
-    border-top: 0;
-    clear: both;
-    margin-bottom: 20px;
-    position: relative;
-    top: -1px;
+  border: 1px solid $border;
+  border-radius: 0 0 6px 6px;
+  border-top: 0;
+  clear: both;
+  margin-bottom: 20px;
+  position: relative;
+  top: -1px;
 }
 
 .content p {
-    margin: 0;
+    margin: 0 auto;
     padding: 20px;
     color: $main-text;
 }
+
+#tab-1 {
+  position: relative;
+  left: 50%;
+  top: -234px;
+}
+
+#tab-2,
+#tab-3,
+#tab-4 {
+  position: relative;
+  left: 36%;
+  top: -250px;
+  width: 60%;
+}
+
+.guest-search-add-forms {
+  display: flex;
+}
+
+#search-form {
+  padding-top: 45px
+}
+
+#add-guest-form {
+  padding-top: 20px;
+}
+
+.form {
+  display: block;
+  width: 30%;
+  height: 30px;
+  margin: 0 20px;
+}
+
+.form-btn {
+  margin-bottom: 20px;
+}
+
+.form-input input {
+  margin-top: 20px;
+}
+
+.form-label {
+  text-align: center;
+}
+
+
 

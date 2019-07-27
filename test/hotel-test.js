@@ -27,6 +27,19 @@ describe('Hotel', () => {
 
   it('should hold customer data', () => {
     expect(hotel.customerData).to.not.eql(undefined);
+    console.log(hotel.customerData);
+  });
+
+    it('should hold room data', () => {
+    expect(hotel.roomData).to.not.eql(undefined);
+  });
+
+    it('should hold booking data', () => {
+    expect(hotel.bookingData).to.not.eql(undefined);
+  });
+
+    it('should hold room service data', () => {
+    expect(hotel.orderData).to.not.eql(undefined);
   });
 
   //property not equal to undefined
