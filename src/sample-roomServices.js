@@ -1,4 +1,4 @@
-roomServices = [
+const roomServices = [
 {
 userID: 14,
 date: "2019/07/29",
@@ -138,3 +138,5 @@ food: "Sleek Steel Sandwich",
 totalCost: 12.79
 }
 ]
+
+export default roomServices;
