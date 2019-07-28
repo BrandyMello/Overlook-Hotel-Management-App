@@ -12,6 +12,7 @@ class Hotel {
     this.roomsAvailable;
     this.percentOccupied;
     this.revenue;
+    this.bookingRevenue;
     this.guestInfo;
 
   }
@@ -30,7 +31,8 @@ class Hotel {
     domUpdates.appendRoomsAvailable(this.roomsAvailable);
     this.percentOccupied = this.calculatePercentOccupied(date);
     domUpdates.occupancy(this.percentOccupied);
-    this.calculateBookingsRevenue(date);
+    this.bookingRevenue =this.calculateBookingsRevenue(date);
+    domUpdates.appendBookingRev(this.bookingRevenue); 
   }
 
   calculateTotalRooms() {
@@ -49,11 +51,19 @@ class Hotel {
       return Math.round(this.calculateRoomsBookedToday(dateToday)/this.calculateTotalRooms() * 100); 
   }
 
-  // calculateBookingsRevenue(dateToday) {
-  //   let bookingRevenue = this.rooms.reduce((totalBookingRevenue, room) => {
-  //     if ()
-  //   }, 0);
-  // }
+  calculateBookingsRevenue(dateToday) {
+    // let roomNums =this.bookings.filter(booking => booking.date === dateToday)
+    // console.log(roomNums[0].roomNumber);
+    let bookingRevenue = this.rooms.reduce((totalBookingRevenue, room) => {
+      let roomNum = this.bookings.filter(booking => booking.date === dateToday)[0].roomNumber; 
+      if(room.number === roomNum) {
+       return totalBookingRevenue += room.costPerNight 
+      }
+        return totalBookingRevenue;
+    }, 0);
+    console.log(bookingRevenue);
+    return bookingRevenue;
+  }
 
   greetGuest(guestName) {
     if (this.guests.filter(guest => guest.name === guestName).length > 0) {

@@ -16,6 +16,10 @@ const domUpdates = {
     $('.occupancy').html(percent);
   },
 
+  appendBookingRev(bookingRevenue) {
+    $('.room-rev').html(` ${bookingRevenue}`);
+  },
+
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
     $('#search-guest-name').val('');
