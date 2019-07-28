@@ -55,4 +55,37 @@ describe('Hotel', () => {
     expect(hotel.orders[2].food).to.eql("Tasty Wooden Sandwich");
     expect(hotel.orders[3].totalCost).to.eql(14.87);
   });
+     it('should calculate rooms avaialable', () => {
+    expect(hotel.calculateVacancies("2019/10/19")).to.equal(49)
+  });
+
+  it('should calculate percentage occupied', () => {
+    expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(2)
+  });
+
+  it('should greet guest upon arrival', () => {
+    expect(hotel.greetGuest('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
+      "2019/10/19": {
+        number: 5,
+        roomType: "junior suite",
+        bidet: false,
+        bedSize: "king",
+        numBeds: 2,
+        costPerNight: 246.65 }
+    }, {
+      "2019/08/02": {
+        number: 45,
+        roomType: "junior suite",
+        bidet: false,
+        bedSize: "full",
+        numBeds: 2,
+        costPerNight: 301.62 }
+    }]
+    }]);
+  });
+
+  it('should calculate total bookings revenue', () => {
+    console.log(hotel.bookings.forEach(booking => console.log(booking.roomNumber)));
+    expect(hotel.calculateBookingsRevenue()).to.equal()
+  });
 });

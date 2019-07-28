@@ -46,62 +46,6 @@ bidet: false,
 bedSize: "king",
 numBeds: 1,
 costPerNight: 211.42
-},
-{
-number: 7,
-roomType: "residential suite",
-bidet: false,
-bedSize: "full",
-numBeds: 2,
-costPerNight: 376.56
-},
-{
-number: 8,
-roomType: "suite",
-bidet: false,
-bedSize: "full",
-numBeds: 1,
-costPerNight: 177.04
-},
-{
-number: 9,
-roomType: "residential suite",
-bidet: true,
-bedSize: "twin",
-numBeds: 1,
-costPerNight: 327.76
-},
-{
-number: 10,
-roomType: "single room",
-bidet: false,
-bedSize: "queen",
-numBeds: 2,
-costPerNight: 296.48
-},
-{
-number: 11,
-roomType: "single room",
-bidet: true,
-bedSize: "queen",
-numBeds: 1,
-costPerNight: 216.05
-},
-{
-number: 12,
-roomType: "single room",
-bidet: false,
-bedSize: "queen",
-numBeds: 1,
-costPerNight: 247.86
-},
-{
-number: 13,
-roomType: "residential suite",
-bidet: false,
-bedSize: "full",
-numBeds: 1,
-costPerNight: 372.83
 }
 ]
 
