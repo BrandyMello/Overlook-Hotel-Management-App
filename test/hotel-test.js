@@ -63,7 +63,7 @@ describe('Hotel', () => {
     expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(2)
   });
 
-  it('should greet guest upon arrival', () => {
+  it('should greet guest with guest information upon arrival', () => {
     expect(hotel.greetGuest('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
       "2019/10/19": {
         number: 5,
@@ -84,8 +84,15 @@ describe('Hotel', () => {
     }]);
   });
 
-  it('should calculate total bookings revenue', () => {
-    console.log(hotel.bookings.forEach(booking => console.log(booking.roomNumber)));
-    expect(hotel.calculateBookingsRevenue()).to.equal()
+  it('should calculate total bookings revenue for today\'s date', () => {
+    expect(hotel.calculateBookingsRevenue("2019/09/01")).to.equal(405.13);
+  });
+
+  it('should calculate total orders revenue for today\'s date', () => {
+    expect(hotel.calculateOrdersRevenue("2019/09/01")).to.equal(10.26);
+  });
+
+  it('should calculate total revenue for today\'s date', () => {
+    expect(hotel.calculateTotalRevenue("2019/09/01")).to.equal(415.39);
   });
 });

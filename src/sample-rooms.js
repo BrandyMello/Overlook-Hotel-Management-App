@@ -46,6 +46,14 @@ bidet: false,
 bedSize: "king",
 numBeds: 1,
 costPerNight: 211.42
+},
+{
+number: 41,
+roomType: "junior suite",
+bidet: false,
+bedSize: "twin",
+numBeds: 2,
+costPerNight: 405.13
 }
 ]
 

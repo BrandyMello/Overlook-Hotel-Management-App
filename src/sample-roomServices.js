@@ -22,6 +22,12 @@ userID: 8,
 date: "2019/08/02",
 food: "Practical Granite Sandwich",
 totalCost: 14.87
+},
+{
+userID: 22,
+date: "2019/09/01",
+food: "Licensed Rubber Sandwich",
+totalCost: 10.26
 }
 ]
 

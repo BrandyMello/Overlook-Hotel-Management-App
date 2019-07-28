@@ -7,10 +7,10 @@ class Hotel {
     this.bookings = bookings;
     this.rooms = rooms;
     this.orders = orders;
-    // this.date = domUpdates.appendDate();
+    this.date;
   }
 
-  // console.log(domUpdates.appendDate())
+  
 
 }
 
