@@ -72,8 +72,12 @@ describe('Hotel', () => {
     expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(14)
   });
 
-  it('should greet guest with guest information upon arrival', () => {
-    expect(hotel.greetGuest('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
+  it('should greet guest upon arrival', () => {
+    expect(hotel.greetGuest('Brook Christiansen')).to.eql('Brook Christiansen');
+  });
+
+  it('should compile guest information upon arrival', () => {
+    expect(hotel.compileGuestInfo('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
       "2019/10/19": {
         number: 5,
         roomType: "junior suite",

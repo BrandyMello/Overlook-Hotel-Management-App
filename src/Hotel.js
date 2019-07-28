@@ -11,6 +11,7 @@ class Hotel {
     this.roomsAvailable;
     this.percentOccupied;
     this.revenue;
+    this.guestInfo;
 
   }
 
@@ -28,7 +29,6 @@ class Hotel {
     domUpdates.appendRoomsAvailable(this.roomsAvailable);
     this.percentOccupied = this.calculatePercentOccupied(date);
     domUpdates.occupancy(this.percentOccupied);
-    // console.log(this.calculateTotalRooms());
   }
 
   calculateTotalRooms() {
@@ -46,6 +46,24 @@ class Hotel {
   calculatePercentOccupied(dateToday) {
       return Math.round(this.calculateRoomsBookedToday(dateToday)/this.calculateTotalRooms() * 100); 
   }
+
+  greetGuest(guestName) {
+    let currentGuest = this.guests.filter(guest => guest.name === guestName);
+    if (currentGuest[0].name === guestName) {
+      domUpdates.appendGuestName(guestName);
+      return currentGuest[0].name;
+    } else {
+      domUpdates.appendGreetingForNewGuest();
+      
+    }
+    
+  }
+
+  // calculateGuestInfo(name) {
+  //   this.guestInfo = this.guests.filter(guest => {
+
+  //   });
+  // }
 
 }
 

@@ -14,6 +14,14 @@ const domUpdates = {
 
   occupancy(percent) {
     $('.occupancy').html(percent);
+  },
+
+  appendGuestName(guestName) {
+    $('.guest-name').html(` ${guestName}`);
+  },
+
+  appendGreetingForNewGuest() {
+    $('#new-guest-mess').show();
   }
 
 }

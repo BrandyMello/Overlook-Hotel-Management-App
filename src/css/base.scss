@@ -128,7 +128,7 @@ li {
 
 .content p {
     margin: 0 auto;
-    padding: 20px;
+    padding: 5px;
     color: $main-text;
 }
 
@@ -179,6 +179,14 @@ li {
 
 .form-label {
   text-align: center;
+}
+
+.hotel-name {
+  font-family: $accent-font;
+}
+
+#new-guest-mess {
+  color: $fourth-color;
 }
 
 
