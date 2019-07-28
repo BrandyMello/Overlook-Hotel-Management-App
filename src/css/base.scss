@@ -4,6 +4,7 @@ $primary-color: #DC9E8B;
 $secondary-color: #fed98ae0;
 // #ffe1a2e0 other option
 $third-color: #8B9098;
+$fourth-color: #678269;
 $background: #F4F6F4;
 $border: #c6c9cd;
 $main-text: #3f434b;
@@ -89,8 +90,9 @@ li {
 .tabs .tab-now a {
   background: $secondary-color;
   border-bottom: none;
-  color: $third-color;
+  color: $fourth-color;
   cursor: default;
+  text-decoration: underline;
     // cursor: url('../images/cursor-rose.jpg'), auto;
 }
 
@@ -145,10 +147,6 @@ li {
   width: 60%;
 }
 
-.guest-search-add-forms {
-  display: flex;
-}
-
 #search-form {
   padding-top: 45px
 }
@@ -162,13 +160,20 @@ li {
   width: 30%;
   height: 30px;
   margin: 0 20px;
+  text-align: center;
 }
 
 .form-btn {
+  color: $fourth-color;
+  font-size: 1em;
+  font-weight: bold;
   margin-bottom: 20px;
+  width: 13%;
+  margin-left: 11.5%;
 }
 
 .form-input input {
+  border: none;
   margin-top: 20px;
 }
 
