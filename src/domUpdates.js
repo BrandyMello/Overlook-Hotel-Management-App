@@ -18,10 +18,13 @@ const domUpdates = {
 
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
+    $('#search-guest-name').val('');
   },
 
-  appendGreetingForNewGuest() {
+  appendGreetingForNewGuest(guestName) {
+    $('.new-guest-name').html(guestName)
     $('#new-guest-mess').show();
+    $('#search-guest-name').val('');
   }
 
 }

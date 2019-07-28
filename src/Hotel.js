@@ -1,4 +1,5 @@
 import domUpdates from './domUpdates.js'
+import Customer from './Customer.js'
 
 
 class Hotel {
@@ -29,6 +30,7 @@ class Hotel {
     domUpdates.appendRoomsAvailable(this.roomsAvailable);
     this.percentOccupied = this.calculatePercentOccupied(date);
     domUpdates.occupancy(this.percentOccupied);
+    this.calculateBookingsRevenue(date);
   }
 
   calculateTotalRooms() {
@@ -47,20 +49,36 @@ class Hotel {
       return Math.round(this.calculateRoomsBookedToday(dateToday)/this.calculateTotalRooms() * 100); 
   }
 
+  // calculateBookingsRevenue(dateToday) {
+  //   let bookingRevenue = this.rooms.reduce((totalBookingRevenue, room) => {
+  //     if ()
+  //   }, 0);
+  // }
+
   greetGuest(guestName) {
     if (this.guests.filter(guest => guest.name === guestName).length > 0) {
       domUpdates.appendGuestName(guestName);
+      this.compileGuestInfo(guestName);
     } else {
-      domUpdates.appendGreetingForNewGuest();
+      domUpdates.appendGreetingForNewGuest(guestName);
     }
+    // return guestName;
   }
 
-  // calculateGuestInfo(name) {
-  //   this.guestInfo = this.guests.filter(guest => {
-
-  //   });
-  // }
-
+  compileGuestInfo(guestName) {
+    let guestId = this.guests.filter(guest => guest.name === guestName)[0].id;
+    let guestOrders = this.orders.filter(order => order.userID === guestId);
+    let roomsVisited = this.bookings.reduce((datesBooked, booking) => {
+      let visitObj = {};
+      if (booking.userID === guestId) {
+        return visitObj[booking.date] = this.rooms.filter(room => room.number === booking.roomNumber)
+      }
+      return datesBooked;
+    }, {});
+    let customer = new Customer(guestId, guestName, guestOrders, roomsVisited);
+    console.log(customer);
+    return customer;
+  }
 }
 
 export default Hotel;

@@ -73,12 +73,9 @@ describe('Hotel', () => {
   });
 
   it('should greet guest upon arrival', () => {
-    expect(hotel.greetGuest('Brook Christiansen')).to.eql('Brook Christiansen');
-  });
-
-  it('should compile guest information upon arrival', () => {
-    expect(hotel.compileGuestInfo('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
-      "2019/10/19": {
+    const customer = new Customer(guestId, guestName, guestOrders, roomsVisiteds)
+    expect(hotel.greetGuest('Brook Christiansen')).to.be.a.equal({ id: 4, name: 'Brook Christiansen', orders: [], visits: [
+      {"2019/10/19": {
         number: 5,
         roomType: "junior suite",
         bidet: false,
@@ -93,8 +90,14 @@ describe('Hotel', () => {
         bedSize: "full",
         numBeds: 2,
         costPerNight: 301.62 }
-    }]
-    }]);
+      }] 
+    });
+  });
+
+  it('should compile guest information upon arrival', () => {
+    // hotel.compileGuestInfo('Brook Christiansen')
+    // var customer = new Customer;
+    expect(hotel.compileGuestInfo('Brook Christiansen')).to.be.an.instanceOf(Customer);
   });
 
   it('should calculate total bookings revenue for today\'s date', () => {
