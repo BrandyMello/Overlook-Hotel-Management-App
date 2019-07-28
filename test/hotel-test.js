@@ -55,12 +55,21 @@ describe('Hotel', () => {
     expect(hotel.orders[2].food).to.eql("Tasty Wooden Sandwich");
     expect(hotel.orders[3].totalCost).to.eql(14.87);
   });
-     it('should calculate rooms avaialable', () => {
-    expect(hotel.calculateVacancies("2019/10/19")).to.equal(49)
+
+    it('should calculate total rooms', () => {
+    expect(hotel.calculateTotalRooms()).to.equal(7)
   });
 
-  it('should calculate percentage occupied', () => {
-    expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(2)
+    it('should calculate rooms occupied to date', () => {
+    expect(hotel.calculateRoomsBookedToday("2019/10/19")).to.equal(1)
+  });
+
+     it('should calculate rooms avaialable to date', () => {
+    expect(hotel.calculateVacancies("2019/10/19")).to.equal(6)
+  });
+
+  it('should calculate percentage occupied to date', () => {
+    expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(14)
   });
 
   it('should greet guest with guest information upon arrival', () => {
