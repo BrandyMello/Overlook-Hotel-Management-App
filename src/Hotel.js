@@ -48,15 +48,11 @@ class Hotel {
   }
 
   greetGuest(guestName) {
-    let currentGuest = this.guests.filter(guest => guest.name === guestName);
-    if (currentGuest[0].name === guestName) {
+    if (this.guests.filter(guest => guest.name === guestName).length > 0) {
       domUpdates.appendGuestName(guestName);
-      return currentGuest[0].name;
     } else {
       domUpdates.appendGreetingForNewGuest();
-      
     }
-    
   }
 
   // calculateGuestInfo(name) {
