@@ -1,8 +1,20 @@
-// import chai from 'chai';
-// const expect = chai.expect;
+import chai from 'chai';
 
-// describe('See if the tests are running', function() {
-//   it('should return true', function() {
-//     expect(true).to.equal(true);
-//   });
-// });
+const expect = chai.expect;
+
+let customer;
+
+describe('Customer', () => {
+
+  beforeEach(() => {
+    customer = new Customer(id, name, orders, visits);
+  });
+
+  it('should be a function', () => {
+    expect(Customer).to.be.a('function');
+  });
+
+  it('should instantiate an new instance of Hotel', () => {
+    expect(customer).to.be.an.instanceOf(Customer);
+  });
+});

@@ -30,12 +30,8 @@ const domUpdates = {
 
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
+    $('.current-guest-orders').attr('hidden', false);
     $('#search-guest-name').val('');
-
-    // $('.tab-now').removeClass('tab-now');
-    // $('#tab-3').parent().addClass('tab-now');
-    // // $('.content div').hide();
-    // $(('#tab-3').attr('href')).show();
   },
 
   appendGreetingForNewGuest(guestName) {

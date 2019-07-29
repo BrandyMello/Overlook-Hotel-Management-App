@@ -104,7 +104,9 @@ class Hotel {
       return datesBooked;
     }, {});
     let customer = new Customer(guestId, guestName, guestOrders, roomsVisited);
-    console.log(customer);
+    customer.getOrders();
+    customer.getVisits();
+    customer.getOrderTotal();
     return customer;
   }
 }
