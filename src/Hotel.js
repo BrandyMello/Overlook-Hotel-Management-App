@@ -36,6 +36,8 @@ class Hotel {
     domUpdates.appendBookingRev(this.bookingRevenue);
     this.ordersRevenue = this.calculateOrdersRevenue(date);
     domUpdates.appendOrdersRev(this.ordersRevenue);
+    this.revenue = this.calculateTotalRevenue(date);
+    domUpdates.appendTotalRevenue(this.revenue);
   }
 
   calculateTotalRooms() {
@@ -74,6 +76,10 @@ class Hotel {
     }, 0);
   }
 
+  calculateTotalRevenue(dateToday) {
+    return this.calculateOrdersRevenue(dateToday) + this.calculateBookingsRevenue(dateToday);
+  }
+  
   greetGuest(guestName) {
     if (this.guests.filter(guest => guest.name === guestName).length > 0) {
       domUpdates.appendGuestName(guestName);

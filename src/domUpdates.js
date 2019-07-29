@@ -24,6 +24,10 @@ const domUpdates = {
     $('.order-rev').html(` ${ordersRevenue}`);
   },
 
+  appendTotalRevenue(totalRevenue) {
+    $('.revenue').html(` ${totalRevenue}`);
+  },
+
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
     $('#search-guest-name').val('');
