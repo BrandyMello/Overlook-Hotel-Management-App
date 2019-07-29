@@ -8,21 +8,23 @@ class Hotel {
     this.bookings = bookings;
     this.rooms = rooms;
     this.orders = orders;
-    this.date;
+    this.date = this.getCurrentDate();
     this.roomsAvailable;
     this.percentOccupied;
     this.revenue;
     this.bookingRevenue;
     this.ordersRevenue;
     this.guestInfo;
-
   }
 
   getCurrentDate() {
     let today = new Date();
-    let date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
-    this.date = date;
-    this.getAndShowInfoToday(date);  
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() +1).padStart(2, '0');
+    let year = today.getFullYear();
+    let date = `${year}/${month}/${day}`
+    this.getAndShowInfoToday(date);
+    return date;  
   }
 
   getAndShowInfoToday(date) {
@@ -56,7 +58,7 @@ class Hotel {
       return Math.round(this.calculateRoomsBookedToday(dateToday)/this.calculateTotalRooms() * 100); 
   }
 
-  calculateBookingsRevenue(dateToday) {
+  calculateBookingsRevenue(dateToday) {  
     let bookingRevenue = this.rooms.reduce((totalBookingRevenue, room) => {
       let roomNums = this.bookings.filter(booking => booking.date === dateToday);
       if(roomNums.length > 0 && room.number === roomNums[0].roomNumber) {
@@ -68,6 +70,7 @@ class Hotel {
   }
 
   calculateOrdersRevenue(dateToday) {
+
     return this.orders.reduce((totalFoodRev, order) => {
       if(order.date === dateToday) {
         return totalFoodRev + order.totalCost;
@@ -87,7 +90,7 @@ class Hotel {
     } else {
       domUpdates.appendGreetingForNewGuest(guestName);
     }
-    // return guestName;
+    return guestName;
   }
 
   compileGuestInfo(guestName) {

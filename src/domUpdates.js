@@ -17,20 +17,25 @@ const domUpdates = {
   },
 
   appendBookingRev(bookingRevenue) {
-    $('.room-rev').html(` ${bookingRevenue}`);
+    $('.room-rev').html(` \$${bookingRevenue}`);
   },
 
   appendOrdersRev(ordersRevenue) {
-    $('.order-rev').html(` ${ordersRevenue}`);
+    $('.order-rev').html(` \$${ordersRevenue}`);
   },
 
   appendTotalRevenue(totalRevenue) {
-    $('.revenue').html(` ${totalRevenue}`);
+    $('.revenue').html(` \$${totalRevenue}`);
   },
 
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
     $('#search-guest-name').val('');
+
+    // $('.tab-now').removeClass('tab-now');
+    // $('#tab-3').parent().addClass('tab-now');
+    // // $('.content div').hide();
+    // $(('#tab-3').attr('href')).show();
   },
 
   appendGreetingForNewGuest(guestName) {

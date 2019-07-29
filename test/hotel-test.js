@@ -73,31 +73,47 @@ describe('Hotel', () => {
   });
 
   it('should greet guest upon arrival', () => {
-    const customer = new Customer(guestId, guestName, guestOrders, roomsVisiteds)
-    expect(hotel.greetGuest('Brook Christiansen')).to.be.a.equal({ id: 4, name: 'Brook Christiansen', orders: [], visits: [
-      {"2019/10/19": {
+    expect(hotel.greetGuest('Brook Christiansen')).to.equal('Brook Christiansen');
+    // const customer = new Customer(guestId, guestName, guestOrders, roomsVisiteds)
+    // expect(hotel.compileGuestInfo('Brook Christiansen')).to.eql(new Customer('object'));
+    // expect(hotel.compileGuestInfo('Brook Christiansen')).to.be.a.equal({ id: 4, name: 'Brook Christiansen', orders: [], visits: [
+    //   {"2019/10/19": {
+    //     number: 5,
+    //     roomType: "junior suite",
+    //     bidet: false,
+    //     bedSize: "king",
+    //     numBeds: 2,
+    //     costPerNight: 246.65 }
+    // }, {
+    //   "2019/08/02": {
+    //     number: 45,
+    //     roomType: "junior suite",
+    //     bidet: false,
+    //     bedSize: "full",
+    //     numBeds: 2,
+    //     costPerNight: 301.62 }
+    //   }] 
+    // });
+  });
+
+  it('should compile guest information upon arrival', () => {
+    expect(hotel.compileGuestInfo('Brook Christiansen')).to.equal(new Customer({ id: 4, name: 'Brook Christiansen', orders: [], visits: [
+      {
         number: 5,
         roomType: "junior suite",
         bidet: false,
         bedSize: "king",
         numBeds: 2,
-        costPerNight: 246.65 }
+        costPerNight: 246.65 
     }, {
-      "2019/08/02": {
         number: 45,
         roomType: "junior suite",
         bidet: false,
         bedSize: "full",
         numBeds: 2,
         costPerNight: 301.62 }
-      }] 
-    });
-  });
-
-  it('should compile guest information upon arrival', () => {
-    // hotel.compileGuestInfo('Brook Christiansen')
-    // var customer = new Customer;
-    expect(hotel.compileGuestInfo('Brook Christiansen')).to.be.an.instanceOf(Customer);
+      ] 
+    }));
   });
 
   it('should calculate total bookings revenue for today\'s date', () => {

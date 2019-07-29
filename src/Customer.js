@@ -7,8 +7,11 @@ class Customer {
     this.name = name;
     this.orders = orders;
     this.visits = visits;
-    
+    console.log(this.orders)
+    console.log(this.visits)
+
   }
+
 }
 
 export default Customer;

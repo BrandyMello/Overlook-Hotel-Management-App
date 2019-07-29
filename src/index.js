@@ -24,11 +24,11 @@ Promise.all([guests, bookings, rooms,  orders])
 
   setTimeout(() => {
   copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
-  copperRose.getCurrentDate();
-  console.log(copperRose.guests);
-  console.log(copperRose.bookings);
-  console.log(copperRose.rooms);
-  console.log(copperRose.orders);
+  // copperRose.getCurrentDate();
+  // console.log(copperRose.guests);
+  // console.log(copperRose.bookings);
+  // console.log(copperRose.rooms);
+  // console.log(copperRose.orders);
 }, 1000);
 
   $('.tabs a').on('click', function(e) {
