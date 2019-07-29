@@ -20,6 +20,10 @@ const domUpdates = {
     $('.room-rev').html(` ${bookingRevenue}`);
   },
 
+  appendOrdersRev(ordersRevenue) {
+    $('.order-rev').html(` ${ordersRevenue}`);
+  },
+
   appendGuestName(guestName) {
     $('.guest-name').html(` ${guestName}`);
     $('#search-guest-name').val('');
