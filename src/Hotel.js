@@ -121,6 +121,15 @@ class Hotel {
     domUpdates.appendAllRoomsAvailable(unbookedRooms);
     return unbookedRooms;
   }
+
+  addNewGuest(guestName) {
+    let idValue = this.guests.length + 1;
+    let guestObj = {['id']: idValue, ['name']: guestName};
+    this.guests.push(guestObj);
+    console.log(this.guests)
+    let newGuest = new Customer(guestObj, [], []);
+    newGuest.setupNewGuest(guestName);
+  }
 }
 
 export default Hotel;

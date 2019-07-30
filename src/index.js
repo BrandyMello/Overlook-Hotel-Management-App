@@ -49,7 +49,8 @@ Promise.all([guests, bookings, rooms,  orders])
 
   $('.add-btn').on('click', function(e) {
     e.preventDefault();
-    
+    let newGuest = $('#add-guest-name').val();
+    copperRose.addNewGuest(newGuest);
   });
 
   $('.menu-item-btn').on("click", function(e) {

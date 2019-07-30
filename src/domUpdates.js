@@ -42,7 +42,7 @@ const domUpdates = {
 
   appendMenu(menu) {
     let menuList = menu.map(order => { 
-    $('.menu-items').append(`<tr><td>${order.food}</td><td>${order.cost}</td><td><button class="menu-item-btn" data-id=${order.food}></button></td></tr>`)
+    $('.menu-items').append(`<tr aria-label="${order.food}${order.cost}"><td>${order.food}</td><td>${order.cost}</td><td><input type="checkbox"  aria-label="${order.food}${order.cost}" data-id=${order.cost}></td></tr>`)
     });
     return menuList
   },
@@ -65,26 +65,14 @@ const domUpdates = {
     });
   },
 
-    appendCurrentGuestVisits(stays, guestName) {
-      console.log(stays);
-      $('.current-guest-stays').attr('hidden', false);
-      $('.current-guest-stays-message').append(`<span class="guest-name">${guestName}</span>'s STAYS AT <span class="hotel-name">The Copper Rose</span>`)
-      $('.current-guest-stays').append(`<thead><td>${'Date'}</td><td>${'Room'}</td><td>${'Type'}</td><td>${'Bidet'}</td><td>${'Bed Sizes'}</td><td>${'No. of Beds'}</td><td>${'Rate'}</td></thead>`)
-      let pastStays = stays.map(stay => {  
-        $('.current-guest-stays').append(`<tr></tr><tr><td>${stay.date}</td><td>${stay.room.number}</td><td>${stay.room.roomType}</td><td>${stay.room.bidet}</td><td>${stay.room.bedSize}</td><td>${stay.room.numBeds}</td><td>${stay.room.costPerNight}</td></tr>`)
-      });
-
-    // console.log(allRooms);
-    //   console.log('heya')
-    }
-    // console.log('heya')
-    //Fo
-    // $('.current-guest-visits').attr('hidden', false);
-    // let pastStays = unbookedRooms.map(room => {  
-    // $('.current-guest-visits').append(`<tr><td>${'ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
-    // });
-
-
+  appendCurrentGuestVisits(stays, guestName) {
+    $('.current-guest-stays').attr('hidden', false);
+    $('.current-guest-stays-message').append(`<span class="guest-name">${guestName}</span>'s STAYS AT <span class="hotel-name">The Copper Rose</span>`)
+    $('.current-guest-stays').append(`<thead><td>${'Date'}</td><td>${'Room'}</td><td>${'Type'}</td><td>${'Bidet'}</td><td>${'Bed Sizes'}</td><td>${'No. of Beds'}</td><td>${'Rate'}</td></thead>`)
+    let pastStays = stays.map(stay => {  
+    $('.current-guest-stays').append(`<tr></tr><tr><td>${stay.date}</td><td>${stay.room.number}</td><td>${stay.room.roomType}</td><td>${stay.room.bidet}</td><td>${stay.room.bedSize}</td><td>${stay.room.numBeds}</td><td>${stay.room.costPerNight}</td></tr>`)
+    });
+  }
 }
 
 export default domUpdates;

@@ -8,6 +8,7 @@ class Customer {
     this.name = guestObject.name;
     this.visits = visits;
     this.orders = orders;
+    this.cart;
     this.allTheRooms;
   }
 
@@ -23,8 +24,8 @@ class Customer {
       total += order.totalCost
       return total
     }, 0)
-    return orderTotal;
     domUpdates.appendOrderTotal(orderTotal);
+    return orderTotal;
   }
 
   getPastStays() {
@@ -42,6 +43,14 @@ class Customer {
     });
     domUpdates.appendCurrentGuestVisits(result, this.name);
     return result; 
+  }
+
+  setupNewGuest(guestName) {
+    domUpdates.appendGuestName(guestName);
+  }
+
+  orderFood() {
+
   }
 }
 

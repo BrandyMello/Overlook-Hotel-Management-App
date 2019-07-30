@@ -116,4 +116,9 @@ describe('Hotel', () => {
     expect(hotel.getRoomsAvailable().length).to.eql(7);
     expect(domUpdates.appendAllRoomsAvailable).to.have.been.called(1);
   });
+
+  it('should add a new guest to the guests database', () => {
+    hotel.addNewGuest('Brandy Mello')
+    expect(hotel.guests.length).to.equal(5)
+  });
 });
