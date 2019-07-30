@@ -88,8 +88,7 @@ class Hotel {
       let guestObj = this.guests.find(guest => guest.name === guestName);
       let guestVisits = this.bookings.filter(booking => booking.userID === guestObj.id);
       let guestOrders = this.orders.filter(order => order.userID === guestObj.id);
-      console.log(guestOrders)
-      let customer = new Customer(guestObj, guestVisits, guestOrders);
+      let customer = new Customer(guestObj, guestVisits, guestOrders, this.rooms);
       customer.displayGuestInfo();
     } else {
       domUpdates.appendGreetingForNewGuest(guestName);

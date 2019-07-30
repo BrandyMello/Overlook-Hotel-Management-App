@@ -3,24 +3,18 @@ import domUpdates from './domUpdates.js'
 import Hotel from './Hotel.js'
 
 class Customer {
-  constructor(guestObject, visits, orders) {
+  constructor(guestObject, visits, orders, allTheRooms) {
     this.id = guestObject.id;
     this.name = guestObject.name;
     this.visits = visits;
     this.orders = orders;
+    this.allTheRooms = allTheRooms;
   }
 
-    displayGuestInfo() {
-    this.getOrders();
-    this.getVisits();
+  displayGuestInfo() {
+    domUpdates.appendCurrentGuestOrders(this.orders);
+    this.getPastStays();
     this.getOrderTotal();
-  }
-
-  getOrders() {
-    $('.current-guest-orders').attr('hidden', false);
-    let orders = this.orders.map(order => {  
-    $('.current-guest-orders').append(`<tr><td>${'ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
-    });
   }
 
   getOrderTotal() {
@@ -28,11 +22,23 @@ class Customer {
       total += order.totalCost
       return total
     }, 0)
-    $('.orders-total').append(orderTotal);
+    domUpdates.appendOrderTotal(orderTotal);
   }
 
-  getVisits() {
-    console.log(this.visits);
+  getPastStays() {
+    let pastRoomNums = this.visits.map(room => room.roomNumber);
+    let pastStays = this.allTheRooms.filter(room => pastRoomNums.includes(room.number));
+    let result = this.visits.map(visit => {
+      let dateOfStay = visit.date;
+      let roomObj = pastStays.reduce((stayInfo, room) => {
+        if(room.number === visit.roomNumber) {
+          stayInfo = room
+        } 
+        return stayInfo
+      }, {})
+      return {date: dateOfStay, room: roomObj}
+    });
+    domUpdates.appendCurrentGuestVisits(result); 
   }
 }
 
