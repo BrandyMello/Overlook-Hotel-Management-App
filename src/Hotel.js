@@ -70,7 +70,6 @@ class Hotel {
   }
 
   calculateOrdersRevenue(dateToday) {
-
     return this.orders.reduce((totalFoodRev, order) => {
       if(order.date === dateToday) {
         return totalFoodRev + order.totalCost;
@@ -86,28 +85,30 @@ class Hotel {
   greetGuest(guestName) {
     if (this.guests.filter(guest => guest.name === guestName).length > 0) {
       domUpdates.appendGuestName(guestName);
-      this.compileGuestInfo(guestName);
+      let guestObj = this.guests.find(guest => guest.name === guestName);
+      let guestVisits = this.bookings.filter(booking => booking.userID === guestObj.id);
+      let guestOrders = this.orders.filter(order => order.userID === guestObj.id);
+      console.log(guestOrders)
+      let customer = new Customer(guestObj, guestVisits, guestOrders);
+      customer.displayGuestInfo();
     } else {
       domUpdates.appendGreetingForNewGuest(guestName);
     }
     return guestName;
   }
 
-  compileGuestInfo(guestName) {
-    let guestId = this.guests.filter(guest => guest.name === guestName)[0].id;
-    let guestOrders = this.orders.filter(order => order.userID === guestId);
-    let roomsVisited = this.bookings.reduce((datesBooked, booking) => {
-      let visitObj = {};
-      if (booking.userID === guestId) {
-        return visitObj[booking.date] = this.rooms.filter(room => room.number === booking.roomNumber)
+  getMenu(orders) {
+    let menu = orders.reduce((menuItems, order) => {
+      if (!menuItems.includes(order.food)) {
+        let item = {}
+        item['food'] = order.food;
+        item['cost'] = order.totalCost;
+        menuItems.push(item)
       }
-      return datesBooked;
-    }, {});
-    let customer = new Customer(guestId, guestName, guestOrders, roomsVisited);
-    customer.getOrders();
-    customer.getVisits();
-    customer.getOrderTotal();
-    return customer;
+      return menuItems;
+    }, []);
+    domUpdates.appendMenu(menu);
+    return menu
   }
 }
 

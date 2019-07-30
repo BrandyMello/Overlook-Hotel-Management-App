@@ -3,20 +3,23 @@ import domUpdates from './domUpdates.js'
 import Hotel from './Hotel.js'
 
 class Customer {
-  constructor(id, name, orders, visits) {
-    this.id = id;
-    this.name = name;
-    this.orders = orders;
+  constructor(guestObject, visits, orders) {
+    this.id = guestObject.id;
+    this.name = guestObject.name;
     this.visits = visits;
-    console.log(this.orders)
-    console.log(this.visits)
+    this.orders = orders;
+  }
 
+    displayGuestInfo() {
+    this.getOrders();
+    this.getVisits();
+    this.getOrderTotal();
   }
 
   getOrders() {
     $('.current-guest-orders').attr('hidden', false);
     let orders = this.orders.map(order => {  
-    $('.current-guest-orders').append(`<tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
+    $('.current-guest-orders').append(`<tr><td>${'ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
     });
   }
 
@@ -30,7 +33,6 @@ class Customer {
 
   getVisits() {
     console.log(this.visits);
-    // let visits = this.visits.map(visit => )
   }
 }
 

@@ -38,7 +38,15 @@ const domUpdates = {
     $('.new-guest-name').html(guestName)
     $('#new-guest-mess').show();
     $('#search-guest-name').val('');
+  },
+
+  appendMenu(menu) {
+    let menuList = menu.map(order => { 
+    $('.menu-items').append(`<tr><td>${order.food}</td><td>${order.cost}</td><td><button class="menu-item-btn" data-id=${order.food}></button></td></tr>`)
+    });
+    return menuList
   }
+
 
 }
 
