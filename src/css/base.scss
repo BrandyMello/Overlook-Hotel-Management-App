@@ -132,16 +132,14 @@ li {
     color: $main-text;
 }
 
+.current-guest-stays-message {
+    width: 500px;
+  }
+
 #tab-1 {
   position: relative;
   left: 42%;
 }
-
-// #tab-3 {
-//  display: flex;
-//  flex-direction: column;
-//  flex-wrap: wrap 
-// }
 
 .welcome-tab3 {
   float: right;

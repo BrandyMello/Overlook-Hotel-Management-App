@@ -38,7 +38,7 @@ class Customer {
       }, {})
       return {date: dateOfStay, room: roomObj}
     });
-    domUpdates.appendCurrentGuestVisits(result); 
+    domUpdates.appendCurrentGuestVisits(result, this.name); 
   }
 }
 

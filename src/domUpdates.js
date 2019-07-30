@@ -59,19 +59,23 @@ const domUpdates = {
   },
 
   appendAllRoomsAvailable(unbookedRooms) {
-    $('.current-rooms-available').append(`<thead><td>${'Room'}</td><td>${'Type'}</td><td>${'Bidet'}</td><td>${'Bed Sizes'}</td><td>${'No. of Beds'}</td><td>${'Rate'}</td></thead>`)
+    
     let availableRoomList = unbookedRooms.map(room => {  
     $('.current-rooms-available').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><button class="room-available-btn" data-id=${room.number}></button></td></tr>`)
     });
   },
 
-    appendCurrentGuestVisits(stays, allRooms) {
-      // let pastStays = allRooms.map(room => {  
-      //   $('.current-guest-stays').append(`<p class="guest-stays-message" ><span class="guest-name"></span>'s STAYS AT <span class="hotel-name">The Copper Rose</span></p><br><tr><td>${'ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
-      // });
+    appendCurrentGuestVisits(stays, guestName) {
+      console.log(stays);
+      $('.current-guest-stays').attr('hidden', false);
+      $('.current-guest-stays-message').append(`<span class="guest-name">${guestName}</span>'s STAYS AT <span class="hotel-name">The Copper Rose</span>`)
+      $('.current-guest-stays').append(`<thead><td>${'Date'}</td><td>${'Room'}</td><td>${'Type'}</td><td>${'Bidet'}</td><td>${'Bed Sizes'}</td><td>${'No. of Beds'}</td><td>${'Rate'}</td></thead>`)
+      let pastStays = stays.map(stay => {  
+        $('.current-guest-stays').append(`<tr></tr><tr><td>${stay.date}</td><td>${stay.room.number}</td><td>${stay.room.roomType}</td><td>${stay.room.bidet}</td><td>${stay.room.bedSize}</td><td>${stay.room.numBeds}</td><td>${stay.room.costPerNight}</td></tr>`)
+      });
 
-    console.log(allRooms);
-      console.log('heya')
+    // console.log(allRooms);
+    //   console.log('heya')
     }
     // console.log('heya')
     //Fo
