@@ -49,9 +49,12 @@ class Customer {
     domUpdates.appendGuestName(guestName);
   }
 
-  orderFood() {
-
-  }
+  // orderFood() {
+  //   var menuItems = $('.food-item').map(function() {
+  //   return $(this).data('id');
+  //   }).get();
+  //   console.log(menuItems);
+  // }
 }
 
 export default Customer;

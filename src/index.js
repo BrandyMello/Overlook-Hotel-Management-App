@@ -53,12 +53,29 @@ Promise.all([guests, bookings, rooms,  orders])
     copperRose.addNewGuest(newGuest);
   });
 
-  $('.menu-item-btn').on("click", function(e) {
+  $('.menu-item-btn').on('click', function(e) {
     e.preventDefault();
     let target = e.target
 //nothing happening here
     console.log(  'here', target );
   });
+
+  $('.add-menu-items').on('click', function (e) {
+    e.preventDefault();
+     let cart = [];
+    $("input[name='menu-item']:checked").each(function(){cart.push($(this).data('id'));});
+    domUpdates.appendNewOrder(cart);
+    console.log(cart)
+  });
+
+ //To get the checked checbox data in textarea, you can do:
+
+// $('.food-item').change(function() {
+//   $('#t').val(this.checked ? $(this).data('cat') : '');
+// });
+
+//   var items = [];
+// $("input[name='items[]']:checked").each(function(){items.push($(this).val());});
  
 
 
