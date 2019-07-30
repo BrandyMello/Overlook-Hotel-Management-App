@@ -1,20 +1,34 @@
-// import chai from 'chai';
-// import Customer from '../src/Customer';
+import Hotel from '../src/Hotel';
+import Customer from '../src/Customer.js'
+import domUpdates from '../src/domUpdates.js'
+import chai from 'chai';
+import spies from 'chai-spies';
 
-// const expect = chai.expect;
+const expect = chai.expect;
+chai.use(spies);
+chai.spy.on(domUpdates,['appendCurrentGuestOrders', 'appendOrderTotal', 'appendCurrentGuestVisits'], () => {})
 
-// describe('Customer', () => {
+describe('Customer', () => {
 
-//   it('should be a function', () => {
-//     expect(Customer).to.be.a('function');
-//   });
+  let customer;
+  beforeEach(() => {
+    customer = new Customer({id: 4, name: "Brook Christiansen"}, [ { userID: 4, date: '2019/10/19', roomNumber: 5 },
+     { userID: 4, date: '2019/08/02', roomNumber: 45 } ], []);
+  });
 
-//   let customer;
-//   beforeEach(() => {
-//     customer = new Customer(id, name, orders, visits);
-//   });
+  it('should be a function', () => {
+    expect(Customer).to.be.a('function');
+  });
 
-//   it('should instantiate an new instance of Customer', () => {
-//     expect(customer).to.be.an.instanceOf(Customer);
-//   });
-// });
+  it('should instantiate an new instance of Customer', () => {
+    expect(customer).to.be.an.instanceOf(Customer);
+  });
+
+  it('should calculate total order for current customer', () => {
+    expect(customer.getOrderTotal()).to.equal(0);
+  });
+
+  it('should provide a list of dates of the guest\'s stay and the rooms in which they stayed', () => {
+    expect(customer.getPastStays().length).to.eql(21);
+  });
+});
