@@ -25,6 +25,7 @@ Promise.all([guests, bookings, rooms,  orders])
   setTimeout(() => {
   copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
   copperRose.getMenu(ordersData);
+  copperRose.getRoomsAvailable();
   // copperRose.getCurrentDate();
   // console.log(copperRose.guests);
   // console.log(copperRose.bookings);
@@ -44,7 +45,6 @@ Promise.all([guests, bookings, rooms,  orders])
     e.preventDefault();
     let guestName = $('#search-guest-name').val();
     copperRose.greetGuest(guestName);
-    // copperRose.calculateGuestInfo(guestName);
   });
 
   $('.add-btn').on('click', function(e) {

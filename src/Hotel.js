@@ -110,6 +110,20 @@ class Hotel {
     domUpdates.appendMenu(menu);
     return menu
   }
+
+  getRoomsAvailable() {
+    let otherBookings = this.bookings.reduce((allBookedRooms, booking) => {
+      if(booking.date === this.date) {
+        allBookedRooms.push(booking.roomNumber);
+      }
+      return allBookedRooms;
+  }, []);
+    let unbookedRooms = this.rooms.filter(room => !otherBookings.includes(room.roomNumber))
+    console.log(unbookedRooms)
+
+    console.log(otherBookings, otherBookings.length)
+    
+  }
 }
 
 export default Hotel;
