@@ -42,7 +42,7 @@ const domUpdates = {
 
   appendMenu(menu) {
     let menuList = menu.map(order => { 
-    $('.menu-items').append(`<tr aria-label="${order.food}${order.cost}"><td>${order.food}</td><td>${order.cost}</td><td><input name="menu-item" class="food-item" type="checkbox" aria-label="${order.food} ${order.cost}" data-id="${order.food} ${order.cost}"></td></tr>`)
+    $('.menu-items').append(`<tr aria-label="${order.food}${order.cost}"><td>${order.food}</td><td>${order.cost}</td><td><input name="menu-item" class="food-item" type="checkbox" aria-label="${order.food} ${order.cost}" data-id="${order.food}" data-cat="${order.cost}"></td></tr>`)
     });
     return menuList
   },
@@ -73,10 +73,16 @@ const domUpdates = {
     });
   },
 
-  appendNewOrder(cart) {
-    $('new-food-order').attr('hidden', false);
-    // $('new-food-order').append(cart);
-    console.log(cart)
+  appendNewOrder(cart, cash) {
+    $('.new-food-order').attr('hidden', false);
+    let totalBill = cash.reduce((total, itemCost) => {
+      return total += itemCost
+    }, 0)
+    let bill = cart.map((item, index) => { 
+      $('.new-food-order').append(`<tr><td>${item}</td></tr><tr><td>\$${cash[index]}</td>`);
+    });
+    $('.new-food-order').append(`</tr><tr><td>\$${Math.round(totalBill)}</td></tr>`);
+    console.log(cart, cash)
   }
 }
 

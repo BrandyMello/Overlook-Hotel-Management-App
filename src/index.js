@@ -63,9 +63,11 @@ Promise.all([guests, bookings, rooms,  orders])
   $('.add-menu-items').on('click', function (e) {
     e.preventDefault();
      let cart = [];
+     let cash = [];
     $("input[name='menu-item']:checked").each(function(){cart.push($(this).data('id'));});
-    domUpdates.appendNewOrder(cart);
-    console.log(cart)
+    $("input[name='menu-item']:checked").each(function(){cash.push($(this).data('cat'));});
+    domUpdates.appendNewOrder(cart, cash);
+    console.log(cart, cash)
   });
 
  //To get the checked checbox data in textarea, you can do:
