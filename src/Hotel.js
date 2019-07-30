@@ -118,11 +118,9 @@ class Hotel {
       }
       return allBookedRooms;
   }, []);
-    let unbookedRooms = this.rooms.filter(room => !otherBookings.includes(room.roomNumber))
-    console.log(unbookedRooms)
-
-    console.log(otherBookings, otherBookings.length)
-    
+    let unbookedRooms = this.rooms.filter(room => !otherBookings.includes(room.number));
+    domUpdates.appendAllRoomsAvailable(unbookedRooms);
+    return unbookedRooms;
   }
 }
 
