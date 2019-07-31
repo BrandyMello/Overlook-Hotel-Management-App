@@ -1,4 +1,5 @@
 import domUpdates from './domUpdates.js'
+import Customer from './Customer.js'
 
 
 class Hotel {
@@ -7,22 +8,133 @@ class Hotel {
     this.bookings = bookings;
     this.rooms = rooms;
     this.orders = orders;
-    this.date;
-
+    this.date = this.getCurrentDate();
+    this.roomsAvailable;
+    this.percentOccupied;
+    this.revenue;
+    this.bookingRevenue;
+    this.ordersRevenue;
+    this.guestInfo;
   }
 
   getCurrentDate() {
     let today = new Date();
-    let date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
-    this.date = date;
-    domUpdates.appendDate(date)
-    this.calculateVacancies(date);
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() +1).padStart(2, '0');
+    let year = today.getFullYear();
+    let date = `${year}/${month}/${day}`
+    this.getAndShowInfoToday(date);
+    return date;  
   }
 
-  calculateVacancies(dateToday) {
-    return 50 - this.bookings.filter(booking => booking.date === dateToday).length;
-  } 
+  getAndShowInfoToday(date) {
+    domUpdates.appendDate(date)
+    this.roomsAvailable = this.calculateVacancies(date);
+    this.calculateRoomsBookedToday(date);
+    domUpdates.appendRoomsAvailable(this.roomsAvailable);
+    this.percentOccupied = this.calculatePercentOccupied(date);
+    domUpdates.occupancy(this.percentOccupied);
+    this.bookingRevenue =this.calculateBookingsRevenue(date);
+    domUpdates.appendBookingRev(this.bookingRevenue);
+    this.ordersRevenue = this.calculateOrdersRevenue(date);
+    domUpdates.appendOrdersRev(this.ordersRevenue);
+    this.revenue = this.calculateTotalRevenue(date);
+    domUpdates.appendTotalRevenue(this.revenue);
+  }
 
+  calculateTotalRooms() {
+    return this.rooms.length;
+  }
+
+  calculateRoomsBookedToday(dateToday) {
+    return this.bookings.filter(booking => booking.date === dateToday).length;
+  }
+
+  calculateVacancies(date) {
+    return this.calculateTotalRooms() - this.calculateRoomsBookedToday(date);
+  }
+
+  calculatePercentOccupied(dateToday) {
+      return Math.round(this.calculateRoomsBookedToday(dateToday)/this.calculateTotalRooms() * 100); 
+  }
+
+  calculateBookingsRevenue(dateToday) {  
+    let bookingRevenue = this.rooms.reduce((totalBookingRevenue, room) => {
+      let roomNums = this.bookings.filter(booking => booking.date === dateToday);
+      if(roomNums.length > 0 && room.number === roomNums[0].roomNumber) {
+       return totalBookingRevenue + room.costPerNight 
+      }
+        return totalBookingRevenue;
+    }, 0);
+    return bookingRevenue;
+  }
+
+  calculateOrdersRevenue(dateToday) {
+    return this.orders.reduce((totalFoodRev, order) => {
+      if(order.date === dateToday) {
+        return totalFoodRev + order.totalCost;
+      }
+      return totalFoodRev;
+    }, 0);
+  }
+
+  calculateTotalRevenue(dateToday) {
+    return this.calculateOrdersRevenue(dateToday) + this.calculateBookingsRevenue(dateToday);
+  }
+  
+  greetGuest(guestName) {
+    if (this.guests.filter(guest => guest.name === guestName).length > 0) {
+      domUpdates.appendGuestName(guestName);
+      let guestObj = this.guests.find(guest => guest.name === guestName);
+      let guestVisits = this.bookings.filter(booking => booking.userID === guestObj.id);
+      let guestOrders = this.orders.filter(order => order.userID === guestObj.id);
+      let customer = new Customer(guestObj, guestVisits, guestOrders);
+      customer.displayGuestInfo(this.rooms, this.date);
+      this.guestInfo = customer;
+    } else {
+      domUpdates.appendGreetingForNewGuest(guestName);
+    }
+    return guestName;
+  }
+
+  getMenu(orders) {
+    let menu = orders.reduce((menuItems, order) => {
+      if (!menuItems.includes(order.food)) {
+        let item = {}
+        item['food'] = order.food;
+        item['cost'] = order.totalCost;
+        menuItems.push(item)
+      }
+      return menuItems;
+    }, []);
+    domUpdates.appendMenu(menu);
+    return menu
+  }
+
+  getRoomsAvailable() {
+    let otherBookings = this.bookings.reduce((allBookedRooms, booking) => {
+      if(booking.date === this.date) {
+        allBookedRooms.push(booking.roomNumber);
+      }
+      return allBookedRooms;
+  }, []);
+    let unbookedRooms = this.rooms.filter(room => !otherBookings.includes(room.number));
+    domUpdates.appendAllRoomsAvailable(unbookedRooms);
+    return unbookedRooms;
+  }
+
+  addNewGuest(guestName) {
+    let idValue = this.guests.length + 1;
+    let guestObj = {['id']: idValue, ['name']: guestName};
+    this.guests.push(guestObj);
+    let newGuest = new Customer(guestObj, [], []);
+    this.guestInfo = guestObj;
+    newGuest.setupNewGuest(guestName);
+  }
+
+  sendCart(cart, cash) {
+    this.guestInfo.takeInNewOrder(this.guestInfo, cart, cash)
+  }
 }
 
 export default Hotel;

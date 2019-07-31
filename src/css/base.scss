@@ -53,7 +53,7 @@ main {
   width: 80%;
 }
 
-ul, li, div {
+ul, li {
   background: hsla(0, 0%, 0%, 0);
   border: 0;
   font-size: 100%;
@@ -128,23 +128,28 @@ li {
 
 .content p {
     margin: 0 auto;
-    padding: 20px;
+    padding: 5px;
     color: $main-text;
 }
 
+.current-guest-stays-message {
+    width: 500px;
+  }
+
 #tab-1 {
   position: relative;
-  left: 50%;
-  top: -234px;
+  left: 42%;
 }
 
-#tab-2,
+.welcome-tab3 {
+  float: right;
+}
 #tab-3,
+#tab-2,
 #tab-4 {
   position: relative;
-  left: 36%;
-  top: -250px;
-  width: 60%;
+  left: 15%;
+  width: 45%;
 }
 
 #search-form {
@@ -157,7 +162,7 @@ li {
 
 .form {
   display: block;
-  width: 30%;
+  width: 60%;
   height: 30px;
   margin: 0 20px;
   text-align: center;
@@ -168,8 +173,8 @@ li {
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 20px;
-  width: 13%;
-  margin-left: 11.5%;
+  width: 27%;
+  margin-left: 28.5%;
 }
 
 .form-input input {
@@ -179,6 +184,34 @@ li {
 
 .form-label {
   text-align: center;
+}
+
+.hotel-name {
+  font-family: $accent-font;
+  font-size: 1.3em;
+}
+
+.guest-name,
+#new-guest-mess {
+  color: $fourth-color;
+}
+
+.current-guest-orders {
+  list-style: none;
+}
+
+td {
+  padding: 10px;
+}
+
+.room-available-btn,
+.menu-item-btn {
+  height: 20px;
+  width: 20px;
+}
+
+.cancelation-btn {
+  margin: 10px;
 }
 
 

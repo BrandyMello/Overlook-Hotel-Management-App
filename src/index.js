@@ -23,12 +23,14 @@ Promise.all([guests, bookings, rooms,  orders])
   });
 
   setTimeout(() => {
-  let copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
-  copperRose.getCurrentDate();
-  console.log(copperRose.guests);
-  console.log(copperRose.bookings);
-  console.log(copperRose.rooms);
-  console.log(copperRose.orders);
+  copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
+  copperRose.getMenu(ordersData);
+  copperRose.getRoomsAvailable();
+  // copperRose.getCurrentDate();
+  // console.log(copperRose.guests);
+  // console.log(copperRose.bookings);
+  // console.log(copperRose.rooms);
+  // console.log(copperRose.orders);
 }, 1000);
 
   $('.tabs a').on('click', function(e) {
@@ -41,11 +43,35 @@ Promise.all([guests, bookings, rooms,  orders])
 
   $('.search-btn').on('click', function(e) {
     e.preventDefault();
-
+    let guestName = $('#search-guest-name').val();
+    copperRose.greetGuest(guestName);
+    console.log(guestName)
   });
 
   $('.add-btn').on('click', function(e) {
     e.preventDefault();
-    
+    let newGuest = $('#add-guest-name').val();
+    copperRose.addNewGuest(newGuest);
+    console.log(newGuest)
   });
+
+  $('.add-menu-items').on('click', function(e) {
+    e.preventDefault();
+     let cart = [];
+     let cash = [];
+    $("input[name='menu-item']:checked").each(function() {cart.push($(this).data('id'));});
+    $("input[name='menu-item']:checked").each(function() {cash.push($(this).data('cat'));});
+    domUpdates.appendNewOrder(cart, cash);
+    copperRose.sendCart(cart, cash);
+  });
+
+  $('.book-btn').on('click', function(e) {
+    e.preventDefault();
+    // let newBooking = {};
+    // $("input[]name='reservation]:checked").each(function() {room: newBooking["$(this).data('id')"], cost: newBooking["$(this).data('cat')"]});
+    // domUpdates.appendNewReservation(newBooking);
+  });
+ 
+
+
 

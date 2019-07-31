@@ -1,20 +1,33 @@
-import chai from 'chai';
-import spies from 'chai-spies';
 import users from '../src/sample-users.js';
 import rooms from '../src/sample-rooms.js';
 import bookings from '../src/sample-bookings.js';
 import roomServices from '../src/sample-roomServices.js';
 import Hotel from '../src/Hotel';
+import Customer from '../src/Customer.js'
+import domUpdates from '../src/domUpdates.js'
+import chai from 'chai';
+import spies from 'chai-spies';
 
 const expect = chai.expect;
 chai.use(spies);
+chai.spy.on(domUpdates,['appendDate', 'appendRoomsAvailable', 'occupancy', 'appendBookingRev', 'appendOrdersRev', 'appendTotalRevenue', 'appendGuestName', 'appendGreetingForNewGuest', 'appendMenu', 'appendAllRoomsAvailable'], () => {})
 
-let hotel;
 
 describe('Hotel', () => {
+  let hotel;
+  let customer;
 
   beforeEach(() => {
     hotel = new Hotel(users, bookings, rooms, roomServices);
+  });
+
+  it('should call on other functions to calculate and append to the DOM', () => {
+    expect(domUpdates.appendDate).to.have.been.called(1);
+    expect(domUpdates.appendRoomsAvailable).to.have.been.called(1);
+    expect(domUpdates.occupancy).to.have.been.called(1);
+    expect(domUpdates.appendBookingRev).to.have.been.called(1);
+    expect(domUpdates.appendOrdersRev).to.have.been.called(1);
+    expect(domUpdates.appendTotalRevenue).to.have.been.called(1);   
   });
   
   it('should be a function', () => {
@@ -55,34 +68,23 @@ describe('Hotel', () => {
     expect(hotel.orders[2].food).to.eql("Tasty Wooden Sandwich");
     expect(hotel.orders[3].totalCost).to.eql(14.87);
   });
-     it('should calculate rooms avaialable', () => {
-    expect(hotel.calculateVacancies("2019/10/19")).to.equal(49)
+
+    it('should calculate total rooms', () => {
+    expect(hotel.calculateTotalRooms()).to.equal(7)
   });
 
-  it('should calculate percentage occupied', () => {
-    expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(2)
+    it('should calculate rooms occupied to date', () => {
+    expect(hotel.calculateRoomsBookedToday("2019/10/19")).to.equal(1)
   });
 
-  it('should greet guest with guest information upon arrival', () => {
-    expect(hotel.greetGuest('Brook Christiansen')).to.eql([{id: 4}, {name: 'Brook Christiansen'}, {orders: {}}, {stays: [{
-      "2019/10/19": {
-        number: 5,
-        roomType: "junior suite",
-        bidet: false,
-        bedSize: "king",
-        numBeds: 2,
-        costPerNight: 246.65 }
-    }, {
-      "2019/08/02": {
-        number: 45,
-        roomType: "junior suite",
-        bidet: false,
-        bedSize: "full",
-        numBeds: 2,
-        costPerNight: 301.62 }
-    }]
-    }]);
+    it('should calculate the number of rooms avaialable to date', () => {
+      expect(hotel.calculateVacancies("2019/10/19")).to.equal(6)
   });
+
+  it('should calculate percentage occupied to date', () => {
+    expect(hotel.calculatePercentOccupied("2019/10/19")).to.equal(14)
+  });
+
 
   it('should calculate total bookings revenue for today\'s date', () => {
     expect(hotel.calculateBookingsRevenue("2019/09/01")).to.equal(405.13);
@@ -94,5 +96,29 @@ describe('Hotel', () => {
 
   it('should calculate total revenue for today\'s date', () => {
     expect(hotel.calculateTotalRevenue("2019/09/01")).to.equal(415.39);
+  });
+
+  it.skip('should greet guest upon arrival', () => {
+    customer = new Customer({id: 4, name: "Brook Christiansen"}, [ { userID: 4, date: '2019/10/19', roomNumber: 5 },
+     { userID: 4, date: '2019/08/02', roomNumber: 45 } ], []);
+    expect(hotel.greetGuest('Brook Christiansen')).to.eql('Brook Christiansen');
+    expect(domUpdates.appendGuestName).to.have.been.called(1);
+    expect(domUpdates.appendGreetingForNewGuest).to.have.been.called(1);
+    expect(customer.displayGuestInfo).to.have.been.called(1);
+  });
+
+  it('should provide a menu', () => {
+    expect(hotel.getMenu(roomServices).length).to.eql(5);
+    expect(domUpdates.appendMenu).to.have.been.called(1);
+  });
+
+  it('should provide a list of available rooms', () => {
+    expect(hotel.getRoomsAvailable().length).to.eql(7);
+    expect(domUpdates.appendAllRoomsAvailable).to.have.been.called(1);
+  });
+
+  it('should add a new guest to the guests database', () => {
+    hotel.addNewGuest('Brandy Mello')
+    expect(hotel.guests.length).to.equal(5)
   });
 });
