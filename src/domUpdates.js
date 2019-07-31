@@ -83,6 +83,7 @@ const domUpdates = {
   },
 
   appendAllRoomsAvailableByDate(unbookedRooms) {
+    $('.rooms-available-by-date').append(`<thead class="table-title"><td class="table-title">ROOMS AVAILABLE TODAY</td></thead>`)
     let availableRoomList = unbookedRooms.map(room => {  
     $('.rooms-available-by-date').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><input name="reservation" class="available-reservation" type="checkbox" aria-label="${room.roomType} bidet ${room.bidet} ${room.bedSize} ${room.numBeds} ${room.costPerNight}" data-id="${room.number}" data-cat="${room.costPerNight}"></td></tr>`)
     });
