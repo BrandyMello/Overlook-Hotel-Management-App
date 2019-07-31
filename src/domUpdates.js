@@ -82,7 +82,10 @@ const domUpdates = {
     $('.new-food-order').append(`</tr><tr><td>Bill Total: \$${totalBill}</td></tr>`);
   },
 
-  appendNewReservation(newBooking) {
+  appendAllRoomsAvailableByDate(unbookedRooms) {
+    let availableRoomList = unbookedRooms.map(room => {  
+    $('.rooms-available-by-date').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><input name="reservation" class="available-reservation" type="checkbox" aria-label="${room.roomType} bidet ${room.bidet} ${room.bedSize} ${room.numBeds} ${room.costPerNight}" data-id="${room.number}" data-cat="${room.costPerNight}"></td></tr>`)
+    });
   }
 }
 

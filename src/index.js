@@ -58,8 +58,10 @@ Promise.all([guests, bookings, rooms,  orders])
     copperRose.sendCart(cart, cash);
   });
 
-  $('.book-btn').on('click', function(e) {
+  $('.find-room-by-date-btn').on('click', function(e) {
     e.preventDefault();
+    let checkByDate = $('.date-input').val();
+    copperRose.getRoomsAvailableByDate(checkByDate);
   });
  
 

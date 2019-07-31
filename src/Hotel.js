@@ -123,6 +123,18 @@ class Hotel {
       return unbookedRooms;
   }
 
+  getRoomsAvailableByDate(searchDate) {
+    let otherBookings = this.bookings.reduce((allBookedRooms, booking) => {
+      if(booking.date === searchDate) {
+        allBookedRooms.push(booking.roomNumber);
+      }
+      return allBookedRooms; 
+    }, []);
+      let unbookedRooms = this.rooms.filter(room => otherBookings.includes(room.number));
+      domUpdates.appendAllRoomsAvailableByDate(unbookedRooms);
+      return unbookedRooms;
+  }
+
   addNewGuest(guestName) {
     let idValue = this.guests.length + 1;
     let guestObj = {['id']: idValue, ['name']: guestName};
