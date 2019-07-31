@@ -2,7 +2,6 @@ $primary-background: url('../images/main2.jpg');
 $border-text-color: #FFF;
 $primary-color: #DC9E8B;
 $secondary-color: #fed98ae0;
-// #ffe1a2e0 other option
 $third-color: #8B9098;
 $fourth-color: #678269;
 $background: #F4F6F4;
@@ -93,7 +92,6 @@ li {
   color: $fourth-color;
   cursor: default;
   text-decoration: underline;
-    // cursor: url('../images/cursor-rose.jpg'), auto;
 }
 
 .tabs a {
@@ -213,6 +211,5 @@ td {
 .cancelation-btn {
   margin: 10px;
 }
-
 
 
