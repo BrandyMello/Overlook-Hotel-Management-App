@@ -8,12 +8,14 @@ class Customer {
     this.name = guestObject.name;
     this.visits = visits;
     this.orders = orders;
-    this.cart;
+    this.cart = [];
     this.allTheRooms;
+    this.todaysDate;
   }
 
-  displayGuestInfo(hotelRooms) {
+  displayGuestInfo(hotelRooms, date) {
     this.allTheRooms = hotelRooms;
+    this.todaysDate = date;
     domUpdates.appendCurrentGuestOrders(this.orders);
     this.getPastStays();
     this.getOrderTotal();
@@ -49,12 +51,12 @@ class Customer {
     domUpdates.appendGuestName(guestName);
   }
 
-  // orderFood() {
-  //   var menuItems = $('.food-item').map(function() {
-  //   return $(this).data('id');
-  //   }).get();
-  //   console.log(menuItems);
-  // }
+  takeInNewOrder(guest, cart, cash) {
+    let bill = cart.map((item, index) => { 
+      return this.orders.push({date: this.todaysDate, food: `${item}`, totalCost: `${cash[index]}`, userID: guest.id })
+    });
+    return bill;
+  }
 }
 
 export default Customer;

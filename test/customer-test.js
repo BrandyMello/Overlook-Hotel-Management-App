@@ -31,4 +31,9 @@ describe('Customer', () => {
   it.skip('should provide a list of dates of the guest\'s stay and the rooms in which they stayed', () => {
     expect(customer.getPastStays().length).to.eql(21);
   });
+
+  it('should add new order to the database for current customer current customer', () => {
+    customer.takeInNewOrder(customer, "Rustic Concrete Sandwich", 14.9)
+    expect(customer.orders).to.equal(2);
+  });
 });

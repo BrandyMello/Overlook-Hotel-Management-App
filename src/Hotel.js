@@ -89,7 +89,8 @@ class Hotel {
       let guestVisits = this.bookings.filter(booking => booking.userID === guestObj.id);
       let guestOrders = this.orders.filter(order => order.userID === guestObj.id);
       let customer = new Customer(guestObj, guestVisits, guestOrders);
-      customer.displayGuestInfo(this.rooms);
+      customer.displayGuestInfo(this.rooms, this.date);
+      this.guestInfo = customer;
     } else {
       domUpdates.appendGreetingForNewGuest(guestName);
     }
@@ -126,9 +127,13 @@ class Hotel {
     let idValue = this.guests.length + 1;
     let guestObj = {['id']: idValue, ['name']: guestName};
     this.guests.push(guestObj);
-    console.log(this.guests)
     let newGuest = new Customer(guestObj, [], []);
+    this.guestInfo = guestObj;
     newGuest.setupNewGuest(guestName);
+  }
+
+  sendCart(cart, cash) {
+    this.guestInfo.takeInNewOrder(this.guestInfo, cart, cash)
   }
 }
 

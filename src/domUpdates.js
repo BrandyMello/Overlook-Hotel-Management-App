@@ -60,7 +60,7 @@ const domUpdates = {
 
   appendAllRoomsAvailable(unbookedRooms) {
     let availableRoomList = unbookedRooms.map(room => {  
-    $('.current-rooms-available').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><button class="room-available-btn" data-id=${room.number}></button></td></tr>`)
+    $('.current-rooms-available').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><input name="reservation" class="available-reservation" type="checkbox" aria-label="${room.roomType} bidet ${room.bidet} ${room.bedSize} ${room.numBeds} ${room.costPerNight}" data-id="${room.number}" data-cat="${room.costPerNight}"></td></tr>`)
     });
   },
 
@@ -81,8 +81,11 @@ const domUpdates = {
     let bill = cart.map((item, index) => { 
       $('.new-food-order').append(`<tr><td>${item}</td></tr><tr><td>\$${cash[index]}</td>`);
     });
-    $('.new-food-order').append(`</tr><tr><td>\$${Math.round(totalBill)}</td></tr>`);
-    console.log(cart, cash)
+    $('.new-food-order').append(`</tr><tr><td>Bill Total: \$${Math.round(totalBill)}</td></tr>`);
+  },
+
+  appendNewReservation(newBooking) {
+    console.log('in new booking')
   }
 }
 
