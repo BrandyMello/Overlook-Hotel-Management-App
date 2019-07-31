@@ -117,10 +117,10 @@ class Hotel {
         allBookedRooms.push(booking.roomNumber);
       }
       return allBookedRooms;
-  }, []);
-    let unbookedRooms = this.rooms.filter(room => otherBookings.includes(room.number));
-    domUpdates.appendAllRoomsAvailable(unbookedRooms);
-    return unbookedRooms;
+    }, []);
+      let unbookedRooms = this.rooms.filter(room => otherBookings.includes(room.number));
+      domUpdates.appendAllRoomsAvailable(unbookedRooms);
+      return unbookedRooms;
   }
 
   addNewGuest(guestName) {
