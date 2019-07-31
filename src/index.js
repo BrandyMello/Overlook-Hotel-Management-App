@@ -16,26 +16,36 @@ let orders = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-serv
 Promise.all([guests, bookings, rooms,  orders])
   .then(value => Promise.all(value.map(value => value.json())))
   .then(compiledData => {
-    guestsData = compiledData[0];
-    bookingsData = compiledData[1];
-    roomsData = compiledData[2];
-    ordersData = compiledData[3];
+    guestsData = compiledData[0].users;
+    bookingsData = compiledData[1].bookings;
+    roomsData = compiledData[2].rooms;
+    ordersData = compiledData[3].roomServices;
   });
 
   setTimeout(() => {
   let copperRose = new Hotel(guestsData, bookingsData, roomsData, ordersData);
+  copperRose.getCurrentDate();
   console.log(copperRose.guests);
   console.log(copperRose.bookings);
   console.log(copperRose.rooms);
   console.log(copperRose.orders);
 }, 1000);
 
-  domUpdates.appendDate();
-
-  $('.tabs a').on('click', function (event) {
-    event.preventDefault();
+  $('.tabs a').on('click', function(e) {
+    e.preventDefault();
     $('.tab-now').removeClass('tab-now');
     $(this).parent().addClass('tab-now');
     $('.content div').hide();
     $($(this).attr('href')).show();
-});
+  });
+
+  $('.search-btn').on('click', function(e) {
+    e.preventDefault();
+
+  });
+
+  $('.add-btn').on('click', function(e) {
+    e.preventDefault();
+    
+  });
+
