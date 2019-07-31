@@ -15,6 +15,9 @@ Getting this project up ad running required using fetch and a Promise.all. I use
 ## Objectives
 This Turing Mod 2 solo final project was designed for students to practice skills writing tests with Mocha and Chai, transitioning in JavaScript from ES5 to ES6 syntax while structurally utilizing OOP. We were given several datasets fromwhich we needed to accesss and manipulate data and to append to the DOM with jQuery. The project was additional practice in HTML and CSS, also transitioning to SCSS. No comp was provided.
 
+![copperRoseGiphy](https://user-images.githubusercontent.com/46384968/62180904-b939d580-b30e-11e9-9869-e7e082b127c0.gif)
+
+
 ## Built Using
 Javascript <br>
 jQuery<br>
