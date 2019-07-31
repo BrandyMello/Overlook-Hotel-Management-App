@@ -117,10 +117,22 @@ class Hotel {
         allBookedRooms.push(booking.roomNumber);
       }
       return allBookedRooms;
-  }, []);
-    let unbookedRooms = this.rooms.filter(room => !otherBookings.includes(room.number));
-    domUpdates.appendAllRoomsAvailable(unbookedRooms);
-    return unbookedRooms;
+    }, []);
+      let unbookedRooms = this.rooms.filter(room => otherBookings.includes(room.number));
+      domUpdates.appendAllRoomsAvailable(unbookedRooms);
+      return unbookedRooms;
+  }
+
+  getRoomsAvailableByDate(searchDate) {
+    let otherBookings = this.bookings.reduce((allBookedRooms, booking) => {
+      if(booking.date === searchDate) {
+        allBookedRooms.push(booking.roomNumber);
+      }
+      return allBookedRooms; 
+    }, []);
+      let unbookedRooms = this.rooms.filter(room => otherBookings.includes(room.number));
+      domUpdates.appendAllRoomsAvailableByDate(unbookedRooms);
+      return unbookedRooms;
   }
 
   addNewGuest(guestName) {

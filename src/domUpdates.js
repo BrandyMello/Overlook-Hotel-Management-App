@@ -1,5 +1,3 @@
-
-// import Hotel from './Hotel.js'
 import $ from 'jquery';
 
 const domUpdates = {
@@ -42,7 +40,7 @@ const domUpdates = {
 
   appendMenu(menu) {
     let menuList = menu.map(order => { 
-    $('.menu-items').append(`<tr aria-label="${order.food}${order.cost}"><td>${order.food}</td><td>${order.cost}</td><td><input name="menu-item" class="food-item" type="checkbox" aria-label="${order.food} ${order.cost}" data-id="${order.food}" data-cat="${order.cost}"></td></tr>`)
+    $('.menu-items').append(`<tr aria-label="${order.food}${order.cost}"><td>${order.food}</td><td>\$${order.cost}</td><td><input name="menu-item" class="food-item" type="checkbox" aria-label="${order.food} ${order.cost}" data-id="${order.food}" data-cat="${order.cost}"></td></tr>`)
     });
     return menuList
   },
@@ -50,7 +48,7 @@ const domUpdates = {
   appendCurrentGuestOrders(orderData) {
     $('.current-guest-orders').attr('hidden', false);
     let orders = orderData.map(order => {  
-    $('.current-guest-orders').append(`<tr><td>${'ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td></tr>`)
+    $('.current-guest-orders').append(`<tr><td>${'PAST ORDERS:'}</td></tr><tr><td>${order.date}</td><td>${order.food}</td><td>\$${order.totalCost}</td></tr>`)
     });
   },
 
@@ -81,11 +79,13 @@ const domUpdates = {
     let bill = cart.map((item, index) => { 
       $('.new-food-order').append(`<tr><td>${item}</td></tr><tr><td>\$${cash[index]}</td>`);
     });
-    $('.new-food-order').append(`</tr><tr><td>Bill Total: \$${Math.round(totalBill)}</td></tr>`);
+    $('.new-food-order').append(`</tr><tr><td>Bill Total: \$${totalBill}</td></tr>`);
   },
 
-  appendNewReservation(newBooking) {
-    console.log('in new booking')
+  appendAllRoomsAvailableByDate(unbookedRooms) {
+    let availableRoomList = unbookedRooms.map(room => {  
+    $('.rooms-available-by-date').append(`<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td>${room.bedSize}</td><td>${room.numBeds}</td><td>${room.costPerNight}</td><td><input name="reservation" class="available-reservation" type="checkbox" aria-label="${room.roomType} bidet ${room.bidet} ${room.bedSize} ${room.numBeds} ${room.costPerNight}" data-id="${room.number}" data-cat="${room.costPerNight}"></td></tr>`)
+    });
   }
 }
 
