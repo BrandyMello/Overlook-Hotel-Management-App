@@ -33,5 +33,5 @@ Chai-Spies
 ## To Check it out
 1. Fork this repo - on the top right corner of this page, click the Fork button.
 1. Clone down the forked repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): git clone [remote-address] [what you want to name the repo]
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run npm install to install project dependencies.
-1. Run open src/index.html in the terminal to see the HTML page.
+1. Once you have cloned the repo, change into the directory and run npm install to install project dependencies.
+1. Run npm start in your terminal and open in localhost.
