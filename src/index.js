@@ -63,6 +63,16 @@ Promise.all([guests, bookings, rooms,  orders])
     let checkByDate = $('.date-input').val();
     copperRose.getRoomsAvailableByDate(checkByDate);
   });
+
+  $('.book-btn').on('click', function(e) {
+    e.preventDefault();
+    let guest = $('.guest-name-rooms').text();
+    let newRoomNoBooked = [];
+    let newRoomCostBooked = [];
+    $("input[name='reservation']:checked").each(function() {newRoomNoBooked.push($(this).data('id'));});
+    $("input[name='reservation']:checked").each(function() {newRoomCostBooked.push($(this).data('cat'));});
+    domUpdates.appendNewReservation(guest, newRoomNoBooked, newRoomCostBooked);
+  });
  
 
 
