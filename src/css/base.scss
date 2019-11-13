@@ -19,17 +19,15 @@ body {
 }
 
 header {
- width: 76%;
+ width: 80%;
  height: 160px;
  border: 4px solid $border-text-color;
  margin: 0 auto;
- padding-left: 60px;
  background-color: $primary-color;
  color: $border-text-color;
 
  img {
   margin-right: 20px;
-  width: 16%;
   height: 100%;
   float: left;
  }
